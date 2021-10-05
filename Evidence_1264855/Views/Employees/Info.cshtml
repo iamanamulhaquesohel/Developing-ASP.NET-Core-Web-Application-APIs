@@ -1,0 +1,96 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Information";
+}
+
+<div class="container mb-2">
+    <h4>Employee Details:</h4>
+    <hr />
+    <form method="post" asp-action="Info" asp-controller="Employees" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group row mb-2">
+                    <h4 class="text-center">Employee Photo:</h4>
+                    <img src="~/Uploads/@Model.EmployeePicture" width="200" class="img-thumbnail rounded-circle" />
+                </div>
+            </div>
+            <div class="col-8">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">Employee Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Branch</th>
+                        </tr>
+                    </thead>
+                    <tbody class="mb-2">
+                        <tr class="text-center">
+                            <td>@Model.EmployeeName</td>
+                            <td>@Model.EmployeePhone</td>
+                            <td>@Model.EmployeeSalary.ToString("0.00")</td>
+                            <td>@Model.Branches.BranchName</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">Join Date</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Job Running</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td>@Model.EmployeeJoinDate.ToString("yyyy-MM-dd")</td>
+                            <td>@Model.EmployeeGender</td>
+                            <td>@Model.EmployeeDepartment</td>
+                            <td>@(Model.Continued ? "Yes": "No")</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-5"></div>
+        <div class="col-7">
+            <div class="row">
+                <div class="col-4">
+                    <a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Employees"><i class="fa fa-backward"></i>Back to Index</a>
+                </div>
+                <div class="col-4">
+                    <form method="post" asp-action="Update" asp-controller="Employees" enctype="multipart/form-data">
+                        <a class="btn btn-outline-success" asp-action="Update" asp-controller="Employees" asp-route-Id="@Model.EmployeeId"><i class="fa fa-pencil-square-o "></i>Update Employee</a>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <form method="post" asp-action="Delete" asp-controller="Employees" enctype="multipart/form-data">
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-controller="Employees" asp-route-Id="@Model.EmployeeId"><i class="fa fa-trash-o "></i>Delete Employee</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section styles {
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+}
+@section scripts {
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+}
+
+

@@ -1,0 +1,131 @@
+﻿@model EmployeeUpdateModel
+
+@{
+    ViewData["Title"] = "Update";
+}
+<div class="container mb-2">
+    <div class="row">
+        <div class="col-12">
+            <h3>Update Employee:</h3>
+            <form method="post" asp-action="Update" asp-controller="Employees" asp-route-EmployeeId="@Model.EmployeeId" enctype="multipart/form-data" id="FormAJ">
+                <input type="hidden" asp-for="EmployeeId" />
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeeName" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="EmployeeName" class="form-control form-control-sm" placeholder="Enter Employee Name" />
+                        <span asp-validation-for="EmployeeName" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeePhone" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="EmployeePhone" class="form-control form-control-sm" placeholder="Enter Phone Number" />
+                        <span asp-validation-for="EmployeePhone" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeeSalary" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="EmployeeSalary" class="form-control form-control-sm" placeholder="Enter Salary" />
+                        <span asp-validation-for="EmployeeSalary" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeeDepartment" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <select asp-for="EmployeeDepartment" class="form-select form-select-sm" required>
+                            <option selected="selected" value="">Select Department</option>
+                            <option value="IT">IT- System</option>
+                            <option value="Software">Software</option>
+                            <option value="Accounts">Accounts</option>
+                            <option value="HR">Human Resource</option>
+                            <option value="BA">Business Analysts</option>
+                        </select>
+                        <span asp-validation-for="EmployeeDepartment" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeeJoinDate" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="text" asp-for="EmployeeJoinDate" class="form-control" placeholder="Select Join Date" />
+                        <span asp-validation-for="EmployeeJoinDate" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeeGender" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <select asp-for="EmployeeGender" class="form-select form-select-sm" required>
+                            <option selected="selected" value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <span asp-validation-for="EmployeeGender" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="Continued" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <div class="form-check ">
+                            <input type="checkbox" asp-for="Continued" class="form-check-input" name="continued" />
+                            @* @Html.CheckBoxFor(e => e.Continued, new { @class = "form-check-input" }) *@
+                            <label asp-for="Continued" class="form-check-label"> Yes running!</label>
+                        </div>
+                        <span asp-validation-for="Continued" class="text-danger" />
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label asp-for="BranchId" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <select asp-for="BranchId" class="form-select form-select-sm" asp-items="@(new SelectList( ViewBag.Branches, "BranchId", "BranchName"))" required>
+                            <option selected="selected" value="">Select Branch</option>
+                        </select>
+                        <span asp-validation-for="BranchId" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label asp-for="EmployeePicture" class="col-form-label col-form-label-sm col-2"></label>
+                    <div class="col-4">
+                        <input type="file" asp-for="EmployeePicture" class="form-control form-control-sm" />
+                        <span asp-validation-for="EmployeePicture" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-form-label col-form-label-sm col-2"> Previous Picture</label>
+                    <div class="col-5">
+                        <img src="/Uploads/@ViewBag.currentPicture" style="width:60px" class="img-thumbnail" />
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <div class="col-4 offset-2">
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-secondary" asp-action="Index" asp-controller="Employees"><i class="fa fa-backward"></i>Back to Index</a>
+        </div>
+    </div>
+</div>
+@section styles {
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+    <link href="~/lib/Custom Design/main.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script>
+        $("#EmployeeJoinDate").datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>
+}
+
+
+

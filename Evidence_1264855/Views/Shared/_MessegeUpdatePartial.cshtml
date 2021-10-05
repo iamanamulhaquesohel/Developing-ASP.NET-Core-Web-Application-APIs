@@ -1,0 +1,15 @@
+﻿@model bool?
+@if (Model.Value)
+{
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Branch Updated Successfully !!</strong> To Check Branch you have updated, Click the button below "back to the Index".
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Failed!</strong> Operation failed.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

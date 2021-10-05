@@ -1,0 +1,20 @@
+﻿
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+i {
+    margin-right: 10px;
+}
+
+img {
+    height: 35px;
+    width: 35px;
+}
+
+.logo {
+    margin-right: 10px;
+}

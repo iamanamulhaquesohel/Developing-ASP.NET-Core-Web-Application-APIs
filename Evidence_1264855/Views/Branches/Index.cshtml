@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Branch>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container mb-2">
+    <div class="row mb-2">
+        <div class="col">
+            <div class="display-6">Branch Lists:</div>
+            <div class="d-flex justify-content-end mb-1">
+                <a asp-action="Create" asp-controller="Branches"><i class="fa fa-plus-square-o btn btn-outline-success "></i></a>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr class="text-center">
+                        <th>Branch Name</th>
+                        <th>Branch Address</th>
+                        <th>Branch Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Branch in Model)
+                    {
+                        <tr class="text-center">
+                            <td>@Branch.BranchName</td>
+                            <td>@Branch.BranchAddress</td>
+                            <td>@Branch.BranchEmail</td>
+                            <td classBranch"text-center">
+                                <a asp-action="Update" asp-controller="Branches" asp-route-Id="@Branch.BranchId"><i class="fa fa-pencil-square-o btn btn-outline-success"></i></a>
+                                <a asp-action="Delete" asp-controller="Branches" asp-route-Id="@Branch.BranchId"><i class="fa fa-trash-o btn btn-outline-danger"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section styles {
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/Custom Design/main.css" rel="stylesheet" />
+}
+
