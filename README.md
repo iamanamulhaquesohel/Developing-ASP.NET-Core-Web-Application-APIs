@@ -2,7 +2,7 @@
 
 #MVC Core Final Exam
 
-#Crud Operation Company Site
+#Crud Operation Company Site (Code First)
 1. Create a Contact Us Form. The form must have the following items: picture, text, text area, email, image, select list, date picker. Add Validation(both JavaScript and HTML and Server side) to the Contact Us form.
 
 #Requirement Filled in Project
