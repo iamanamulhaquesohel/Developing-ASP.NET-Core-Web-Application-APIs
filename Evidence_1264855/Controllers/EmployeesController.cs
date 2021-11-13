@@ -1,4 +1,4 @@
-﻿using Evidence_1264855.Models;
+using Evidence_1264855.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -124,28 +124,28 @@ namespace Evidence_1264855.Controllers
             return View(emp);
         }
         //Update Action
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            return View(db.Employees.Include(e => e.Branches).First(e => e.EmployeeId == Id));
+            return View(db.Employees.Include(e => e.Branches).First(e => e.EmployeeId == id));
         }
         //Delete Post Action
         [HttpPost, ActionName("Delete")]
-        public IActionResult DoDelete(int Id)
+        public IActionResult DoDelete(int id)
         {
-            var Employee = new Employee { EmployeeId = Id };
+            var Employee = new Employee { EmployeeId = id };
             db.Entry(Employee).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
         //Info Action
-        public ActionResult Info(int Id)
+        public ActionResult Info(int id)
         {
             ViewBag.Branches = db.Branches.ToList();
-            return View(db.Employees.First(e => e.EmployeeId == Id));
+            return View(db.Employees.First(e => e.EmployeeId == id));
         }
         //Info Post Action
         [HttpPost, ActionName("Info")]
-        public ActionResult DoInfo(int Id)
+        public ActionResult DoInfo(int id)
         {
             return RedirectToAction("Info");
         }
