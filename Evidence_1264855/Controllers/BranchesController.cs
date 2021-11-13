@@ -9,7 +9,7 @@ namespace Evidence_1264855.Controllers
 {
     public class BranchesController : Controller
     {
-        //Db Inject Dependency/ db Context
+        //Database Injection Dependency/ db Context
         readonly CompanyDbContext db = null;
         public BranchesController(CompanyDbContext db) { this.db = db; }
 
@@ -25,46 +25,46 @@ namespace Evidence_1264855.Controllers
         }
         //Create Post Action
         [HttpPost]
-        public IActionResult Create(Branch Branch)
+        public IActionResult Create(Branch branch)
         {
             if (ModelState.IsValid)
             {
-                db.Branches.Add(Branch);
+                db.Branches.Add(branch);
                 db.SaveChanges();
                 return PartialView("_MessegeCreatePartial", true);
             }
             return PartialView("_MessegeCreatePartial", false);
         }
         //Update Action
-        public IActionResult Update(int Id)
+        public IActionResult Update(int id)
         {
-            return View(db.Branches.First(b => b.BranchId == Id));
+            return View(db.Branches.First(b => b.BranchId == id));
         }
         //Update Post Action
         [HttpPost]
-        public IActionResult Update(Branch Branch)
+        public IActionResult Update(Branch branch)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Branch).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.Entry(branch).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
                 return PartialView("_MessegeUpdatePartial", true);
             }
             return PartialView("_MessegeUpdatePartial", false);
         }
         //Delete Action
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            return View(db.Branches.First(b => b.BranchId == Id));
+            return View(db.Branches.First(b => b.BranchId == id));
         }
         //Delete Post Action
         [HttpPost, ActionName("Delete")]
-        public IActionResult DoDelete(int Id)
+        public IActionResult DoDelete(int id)
         {
-            Branch bran = new Branch { BranchId = Id };
-            if (!db.Employees.Any(p => p.BranchId == Id))
+            Branch branch = new Branch { BranchId = id };
+            if (!db.Employees.Any(e => e.BranchId == id))
             {
-                db.Entry(bran).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                db.Entry(branch).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
                 db.SaveChanges();
                 return PartialView("_MessegeDeletePartial", true);
             }

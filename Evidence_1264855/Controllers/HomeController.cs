@@ -8,6 +8,7 @@ namespace Evidence_1264855.Controllers
 {
     public class HomeController : Controller
     {
+        //Home Index
         public IActionResult Index()
         {
             return View();

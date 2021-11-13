@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace Evidence_1264855.Models
 {
+    //Employee Create Model
     public class EmployeeCreateModel
     {
         public int EmployeeId { get; set; }
         [Required, Display(Name = "New Photo")]
+        //IForm File for picture upload
         public IFormFile EmployeePicture { get; set; }
         [Required, StringLength(50), Display(Name = "Employee Name")]
         public string EmployeeName { get; set; }
@@ -30,10 +32,12 @@ namespace Evidence_1264855.Models
         [Required, ForeignKey("Branches"), Display(Name = "Branch Name")]
         public int BranchId { get; set; }
     }
+    //Employee Update Model
     public class EmployeeUpdateModel
     {
         public int EmployeeId { get; set; }
         [Display(Name = "Select New Photo")]
+        //IForm File for picture upload
         public IFormFile EmployeePicture { get; set; }
         [Required, StringLength(50), Display(Name = "Employee Name")]
         public string EmployeeName { get; set; }

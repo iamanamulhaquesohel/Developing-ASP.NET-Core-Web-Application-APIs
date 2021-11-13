@@ -12,7 +12,7 @@ namespace Evidence_1264855.Controllers
 {
     public class EmployeesController : Controller
     {
-        //Db Inject Dependency/ db Context
+        //Database Inject Dependency/ db Context
         readonly CompanyDbContext db = null;
         //for IFormFile this service will use
         readonly IWebHostEnvironment env;
@@ -69,10 +69,10 @@ namespace Evidence_1264855.Controllers
             return View(emp);
         }
         //Update Action
-        public IActionResult Update(int Id)
+        public IActionResult Update(int id)
         {
             ViewBag.Branches = db.Branches.ToList();
-            var emp = db.Employees.Include(b => b.Branches).First(e => e.EmployeeId == Id);
+            var emp = db.Employees.Include(b => b.Branches).First(e => e.EmployeeId == id);
             ViewBag.CurrentPicture = emp.EmployeePicture;
             return View(new EmployeeUpdateModel
             {

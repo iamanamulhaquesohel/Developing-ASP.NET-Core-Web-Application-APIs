@@ -21,8 +21,11 @@ namespace Evidence_1264855
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CompanyDbContext>(op => op.UseSqlServer(this.Configuration.GetConnectionString("DbConfig")));
+            //Add Database Context and Connection String
+            services.AddDbContext<CompanyDbContext>(option => option.UseSqlServer(this.Configuration.GetConnectionString("DbConfig")));
+            //Add Mvc Service
             services.AddControllersWithViews();
+            //Add Runtime Compilation Service
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif

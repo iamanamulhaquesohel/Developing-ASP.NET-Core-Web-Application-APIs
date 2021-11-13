@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Evidence_1264855.Models
 {
+    //Branch Class
     public class Branch
     {
         public Branch()
@@ -24,7 +25,7 @@ namespace Evidence_1264855.Models
         //Navigation
         public virtual ICollection<Employee> Employees { get; set; }
     }
-
+    //Employee Class
     public class Employee
     {
         public int EmployeeId { get; set; }
@@ -51,6 +52,7 @@ namespace Evidence_1264855.Models
         public virtual Branch Branches { get; set; }
     }
 
+    //Db Context Add 
     public class CompanyDbContext : DbContext
     {
         public CompanyDbContext(DbContextOptions<CompanyDbContext> options) : base(options) { }
